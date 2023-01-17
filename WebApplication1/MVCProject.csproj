@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Shared\_Layout.cshtml.old" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\Shared\_Layout.cshtml.old" />
+    <ProjectReference Include="..\ClassLibrary1\ProjectAPI.csproj" />
   </ItemGroup>
 
 </Project>

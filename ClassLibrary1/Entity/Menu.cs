@@ -19,5 +19,21 @@ namespace AssociationCRMDawanPoe.Entity
             Name = name;
             this.products = products;
         }
+
+
+        /// <summary>
+        /// Prix sans réduction
+        /// </summary>
+        /// <returns></returns>
+        public double GetPrice()
+        {
+            double retour = 0;
+            foreach (Product product in products)
+            {
+                retour += product.Price;
+            }
+            return retour;
+        }
+
     }
 }

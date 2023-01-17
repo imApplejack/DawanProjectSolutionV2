@@ -1,16 +1,19 @@
+using AssociationCRMDawanPoe.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
-
 builder.Services.AddSession(options =>
 {
-    options.Cookie.Name = ".AdventureWorks.Session";
+    options.Cookie.Name = ".DawanProject.Session";
     options.IdleTimeout = TimeSpan.FromSeconds(300);
     options.Cookie.IsEssential = true;
 });
+
+
+builder.Services.AddScoped<IMenuService, MenuServiceMock>();
 
 
 var app = builder.Build();
@@ -34,6 +37,6 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Menu}/{action=Menu}/{id?}");
 
 app.Run();
