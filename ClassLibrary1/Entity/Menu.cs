@@ -13,6 +13,8 @@ namespace AssociationCRMDawanPoe.Entity
 
         public List<Product> products = new List<Product>();
 
+        public string Image { get; set; } = "https://eu-images.contentstack.com/v3/assets/blt5004e64d3579c43f/blt4e32a970bffd0792/61d866010f60435c58f20a0a/big-mac.png?auto=webp&width=1280&disable=upscale";
+
         public Menu() { }
         public Menu(string name, List<Product> products)
         {

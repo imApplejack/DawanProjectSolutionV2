@@ -1,4 +1,6 @@
 ﻿using AssociationCRMDawanPoe.Entity;
+using AssociationCRMDawanPoe.Persistance;
+using ProjectAPI.Persistance;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,14 @@ namespace AssociationCRMDawanPoe.Service
 {
     public class OrderServiceImpl : IOrderService
     {
+
+        public IOrderRepository OrderRepository { get; set; }
+
+        public OrderServiceImpl(IOrderRepository orderRepository)
+        {
+            OrderRepository = orderRepository;
+        }
+
         public Order CallOrder(string ordername)
         {
             throw new NotImplementedException();

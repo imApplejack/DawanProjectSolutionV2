@@ -20,7 +20,6 @@ namespace AssociationCRMDawanPoe.Persistance
         }
 
 
-
         private void HydrateMenuChilds(Menu Menu)
         {
             var Products = this.EntityManager.Query("Menu_Product").Where("MenuId", Menu.Id).Get();
@@ -33,7 +32,7 @@ namespace AssociationCRMDawanPoe.Persistance
 
         public Menu GetById(int id)
         {
-            Menu Menu = this.EntityManager.Query("Menu").Get<Menu>().First();
+            Menu Menu = this.EntityManager.Query("Menu").Where("Id", id).Get<Menu>().First();
             HydrateMenuChilds(Menu);
             return Menu;
         }

@@ -1,4 +1,5 @@
 ﻿using AssociationCRMDawanPoe.Entity;
+using ProjectAPI.Persistance;
 using SqlKata.Compilers;
 using SqlKata.Execution;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AssociationCRMDawanPoe.Persistance
 {
-    public class ProductRepository : AbstractRepository
+    public class ProductRepository : AbstractRepository, IProductRepository
     {
         public ProductRepository(string connexionString) : base(connexionString)
         {

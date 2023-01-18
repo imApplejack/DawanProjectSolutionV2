@@ -46,6 +46,11 @@ namespace AssociationCRMDawanPoe.Service
 
         }
 
+        public Menu GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Menu GetByName(string name)
         {
             throw new NotImplementedException();

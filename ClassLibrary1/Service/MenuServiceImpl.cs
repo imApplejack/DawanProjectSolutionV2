@@ -22,5 +22,10 @@ namespace AssociationCRMDawanPoe.Service
         {
             return MenuRepository.GetAll();
         }
+
+        public Menu GetById(int id)
+        {
+            return MenuRepository.GetById(id);
+        }
     }
 }

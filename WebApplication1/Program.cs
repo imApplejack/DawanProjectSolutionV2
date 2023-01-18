@@ -19,11 +19,14 @@ builder.Services.AddSession(options =>
 string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 
+builder.Services.Add(new ServiceDescriptor(typeof(IProductRepository), new ProductRepository(connectionString)));
+builder.Services.AddScoped<IProductService, ProductServiceImpl>();
 
 builder.Services.Add(new ServiceDescriptor(typeof(IMenuRepository), new MenuRepository(connectionString)));
-    //<IMenuRepository, IMenuRepository>();
-
 builder.Services.AddScoped<IMenuService, MenuServiceImpl>();
+
+builder.Services.Add(new ServiceDescriptor(typeof(IOrderRepository), new OrderRepository(connectionString)));
+builder.Services.AddScoped<IOrderService, OrderServiceImpl>();
 
 
 var app = builder.Build();

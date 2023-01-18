@@ -14,7 +14,6 @@ namespace WebApplication1.Controllers
     {
         
         IMenuService _menuService;
-        IMenuRepository _menuRepository;
 
         public MenuController(IMenuService menuService)
         {

@@ -8,6 +8,7 @@ GO
 CREATE TABLE [dbo].[Menu](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](40) NOT NULL,
+
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

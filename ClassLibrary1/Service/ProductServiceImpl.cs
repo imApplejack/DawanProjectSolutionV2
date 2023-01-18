@@ -1,12 +1,20 @@
 ﻿using AssociationCRMDawanPoe.Entity;
 using AssociationCRMDawanPoe.Persistance;
+using ProjectAPI.Persistance;
 
 namespace AssociationCRMDawanPoe.Service
 {
     public class ProductServiceImpl : IProductService
     {
 
-        public ProductRepository ProductRepository { get; set; }
+        public IProductRepository ProductRepository { get; set; }
+
+
+        public ProductServiceImpl(IProductRepository productRepository)
+        {
+            ProductRepository = productRepository;
+        }
+
 
         public void Createproduct(Product p)
         {

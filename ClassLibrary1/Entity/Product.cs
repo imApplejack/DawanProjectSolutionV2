@@ -19,6 +19,8 @@ namespace AssociationCRMDawanPoe.Entity
         public string Name { get; set; } = String.Empty;
         public double Price { get; set; } = 0;
 
+        
+
         public ProductCategory ProductCategory = ProductCategory.Other;
     }
 }

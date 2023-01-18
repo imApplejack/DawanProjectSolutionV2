@@ -9,7 +9,9 @@ namespace AssociationCRMDawanPoe.Service
 {
     public interface IMenuService
     {
-        List<Menu> GetAll();
+        public List<Menu> GetAll();
+
+        public Menu GetById(int id);
 
     }
 }
