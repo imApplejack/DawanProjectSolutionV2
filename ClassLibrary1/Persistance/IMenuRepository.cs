@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AssociationCRMDawanPoe.Service
+namespace ProjectAPI.Persistance
 {
-    public interface IMenuService
+    public interface IMenuRepository
     {
-        List<Menu> GetAll();
+        public Menu GetById(int id);
+
+        public List<Menu> GetAll();
 
     }
 }

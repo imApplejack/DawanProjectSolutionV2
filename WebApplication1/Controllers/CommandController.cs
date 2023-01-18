@@ -8,6 +8,8 @@ namespace WebApplication1.Controllers
     public class CommandController : Controller
     {
 
+
+
         public CommandController()
         {
             
@@ -21,10 +23,7 @@ namespace WebApplication1.Controllers
         }
         
 
-     
-
         //public
-
 
     }
 }

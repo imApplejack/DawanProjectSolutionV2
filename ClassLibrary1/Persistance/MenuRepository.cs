@@ -1,4 +1,5 @@
 ﻿using AssociationCRMDawanPoe.Entity;
+using ProjectAPI.Persistance;
 using SqlKata.Execution;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AssociationCRMDawanPoe.Persistance
 {
-    public class MenuRepository : AbstractRepository
+    public class MenuRepository : AbstractRepository, IMenuRepository
     {
 
         public ProductRepository ProductRepository;
@@ -18,16 +19,36 @@ namespace AssociationCRMDawanPoe.Persistance
             ProductRepository = new ProductRepository(connexionString);
         }
 
-        public Menu GetById(int id)
+
+
+        private void HydrateMenuChilds(Menu Menu)
         {
-            Menu Menu = this.EntityManager.Query("Menu").Get<Menu>().First();
             var Products = this.EntityManager.Query("Menu_Product").Where("MenuId", Menu.Id).Get();
             foreach (var item in Products)
             {
                 Menu.products.Add(this.ProductRepository.GetById(item.ProductId));
             }
+        }
+
+
+        public Menu GetById(int id)
+        {
+            Menu Menu = this.EntityManager.Query("Menu").Get<Menu>().First();
+            HydrateMenuChilds(Menu);
             return Menu;
         }
+
+
+        public List<Menu> GetAll()
+        {
+            IEnumerable<Menu> Menus = this.EntityManager.Query("Menu").Get<Menu>();
+            foreach (Menu menu in Menus)
+            {
+                HydrateMenuChilds(menu); 
+            }
+            return Menus.ToList();
+        }
+
 
 
         public void Create(Menu m)
@@ -63,5 +84,7 @@ namespace AssociationCRMDawanPoe.Persistance
                 });
             }
         }
+
+ 
     }
 }

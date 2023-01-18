@@ -1,4 +1,7 @@
+using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using ProjectAPI.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +16,14 @@ builder.Services.AddSession(options =>
 });
 
 
-builder.Services.AddScoped<IMenuService, MenuServiceMock>();
+string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
+
+builder.Services.Add(new ServiceDescriptor(typeof(IMenuRepository), new MenuRepository(connectionString)));
+    //<IMenuRepository, IMenuRepository>();
+
+builder.Services.AddScoped<IMenuService, MenuServiceImpl>();
 
 
 var app = builder.Build();
