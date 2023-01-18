@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AssociationCRMDawanPoe.Entity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MVCProject.ViewComponents
 {
@@ -8,7 +9,10 @@ namespace MVCProject.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
            
-            return  View(10);
+            Order o = new Order() { Products = new List<Product> { new Product() { Price =  10} } };
+
+
+            return View(o);
         }
 
 
