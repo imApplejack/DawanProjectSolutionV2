@@ -5,9 +5,6 @@ namespace AssociationCRMDawanPoe.Service
     public class ProductServiceMock : IProductService
     {
 
-
-
-
         public List<Product> FindByCategory(string Category)
         {
             List<Product> products = new List<Product>();
@@ -70,6 +67,11 @@ namespace AssociationCRMDawanPoe.Service
         }
 
         public void RemoveProductById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product GetById(int id)
         {
             throw new NotImplementedException();
         }

@@ -2,12 +2,17 @@
 @{
 
 }
-<div class="col-xl-4 col-md-6 portfolio-item filter-app">
+<div class="col-xl-4 col-md-6 portfolio-item filter-app element-order-item">
     <div class="portfolio-wrap">
         <a href="img/portfolio/product-1.jpg" data-gallery="portfolio-gallery-app" class="glightbox"><img src="@Model.Image" class="img-fluid" alt=""></a>
         <div class="portfolio-info">
-            <h4><a href="portfolio-details.html" title="More Details">@Model.Name</a></h4>
-            <p>@Model.GetPrice() €</p>
+            
+            <div style="float:left">
+                <h4><a href="portfolio-details.html" title="More Details">@Model.Name</a></h4>
+                <p>@Model.GetPrice() €</p>
+            </div>
+            
+            <button data-type="Menu" data-id="@Model.Id" class="add-command-button" type="submit">Ajouter</button>
         </div>
     </div>
 </div>

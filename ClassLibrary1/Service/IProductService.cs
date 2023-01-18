@@ -12,6 +12,8 @@ namespace AssociationCRMDawanPoe.Service
 
         List<Product> GetAll();
 
+        Product GetById(int id);
+
         void UpdateProduct(Product p);
 
         void Createproduct(Product p);

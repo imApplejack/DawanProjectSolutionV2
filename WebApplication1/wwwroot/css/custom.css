@@ -1,0 +1,16 @@
+﻿
+.element-order-item .add-command-button {
+    background: var(--color-primary);
+    border: 0;
+    padding: 14px 45px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 50px;
+}
+
+.element-order-item .add-command-button:hover {
+    background: rgba(0, 131, 116, 0.8);
+}
+
+
+  

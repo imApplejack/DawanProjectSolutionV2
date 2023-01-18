@@ -37,6 +37,9 @@ namespace AssociationCRMDawanPoe.Service
             this.ProductRepository.Update(p);
         }
 
-
+        public Product GetById(int id)
+        {
+            return this.ProductRepository.GetById(id);
+        }
     }
 }

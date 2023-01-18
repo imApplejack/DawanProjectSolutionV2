@@ -9,15 +9,11 @@ namespace WebApplication1.Controllers
     public class CommandController : Controller
     {
 
-
         IProductService ProductService;
 
         IMenuService MenuService;
 
         IOrderService OrderService;
-
-        
-
 
         public CommandController(IProductService productService, IMenuService menuService, IOrderService orderService)
         {
@@ -32,10 +28,9 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                 Menu m = MenuService.GetById(id);
-                 OrderViewModel.GetOrder().Menus.Add(m);
-
-                 return Ok(Json(400));
+                Menu m = MenuService.GetById(id);
+                OrderViewModel.GetOrder().Menus.Add(m);
+                return Ok(OrderViewModel.GetOrder().GetPrice());
             }
             catch(Exception)
             {
@@ -47,11 +42,16 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IActionResult AddProduct(int id)
         {
-            return Ok(Json("pouet" + id));
+            try
+            {
+                Product p = ProductService.GetById(id);
+                OrderViewModel.GetOrder().Products.Add(p);
+                return Ok(OrderViewModel.GetOrder().GetPrice());
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
         }
-
-
-        //public
-
     }
 }
