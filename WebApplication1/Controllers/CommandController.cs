@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
         }
 
         // permet d'ajouter par son id un menu à la commande en cours
-        [HttpGet]
+        [HttpPost]
         public IActionResult AddMenu( int id )
         {
             try
@@ -39,7 +39,7 @@ namespace WebApplication1.Controllers
 
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult AddProduct(int id)
         {
             try
