@@ -18,7 +18,7 @@ namespace AssociationCRMDawanPoe.Persistance
 
         public void Create(Order o)
         {
-            int affected = this.EntityManager.Query("Command").Insert(new
+            int affected = this.EntityManager.Query("Command").InsertGetId<int>(new
             {
                OrderState = o.OrderState,
                 OrderName = o.OrderName 
@@ -27,7 +27,7 @@ namespace AssociationCRMDawanPoe.Persistance
             
             foreach (Product product in o.Products)
             {
-                this.EntityManager.Query("Command_Product").Insert(new
+               var retour =  this.EntityManager.Query("Command_Product").Insert(new
                 {
                     CommandId = o.Id,
                     ProductId = product.Id

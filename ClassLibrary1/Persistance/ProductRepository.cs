@@ -20,7 +20,7 @@ namespace AssociationCRMDawanPoe.Persistance
 
         public void Create(Product p)
         {
-            int affected = this.EntityManager.Query("Product").Insert(new
+            int affected = this.EntityManager.Query("Product").InsertGetId<int>(new
             {
                 Name = p.Name,
                 Price = p.Price,

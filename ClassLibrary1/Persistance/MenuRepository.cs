@@ -52,7 +52,7 @@ namespace AssociationCRMDawanPoe.Persistance
 
         public void Create(Menu m)
         {
-            int affected = this.EntityManager.Query("Menu").Insert(new
+            int affected = this.EntityManager.Query("Menu").InsertGetId<int>(new
             {
                 Name = m.Name
             });
