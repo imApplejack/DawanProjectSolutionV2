@@ -11,7 +11,7 @@ namespace MVCProject.Models
     /// <summary>
     /// 
     /// </summary>
-    public class CommandePageViewModel 
+    public class CommandePageViewModel
     {
 
         public List<Menu> Menus = new List<Menu>();

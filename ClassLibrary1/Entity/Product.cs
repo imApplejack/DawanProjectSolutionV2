@@ -22,5 +22,10 @@ namespace AssociationCRMDawanPoe.Entity
         public string Image { get; set; } = " https://www.maisonreignier.com/wp-content/uploads/2020/08/coca-light-canette-33cl.png";
 
         public ProductCategory ProductCategory = ProductCategory.Other;
+
+        public double GetPrice()
+        {
+            return Price;
+        }
     }
 }

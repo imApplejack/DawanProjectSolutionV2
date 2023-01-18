@@ -15,16 +15,21 @@ namespace WebApplication1.Controllers
         
         IMenuService _menuService;
 
-        public MenuController(IMenuService menuService)
+        IProductService _productService;
+
+        public MenuController(IMenuService menuService, IProductService productService)
         {
 
             _menuService = menuService;
+            _productService = productService;
         }
 
         public IActionResult Menu()
         {
-            List<Menu> lm = _menuService.GetAll(); 
-            return View(lm);
+            return View(new CommandePageViewModel() { 
+                Menus = _menuService.GetAll(),
+                Products = _productService.GetAll() 
+            });
         }
 
     }
