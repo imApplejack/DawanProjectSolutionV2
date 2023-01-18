@@ -5,7 +5,7 @@ CREATE TABLE Menu_Product (
     MenuId int NOT NULL,
     ProductId int NOT NULL,
     FOREIGN KEY (MenuId) REFERENCES Menu(Id),
-	FOREIGN KEY (ProductId) REFERENCES Command(Id)
+	FOREIGN KEY (ProductId) REFERENCES Product(Id)
 ); 
 
 
@@ -13,7 +13,7 @@ CREATE TABLE Command_Product (
     CommandId int NOT NULL,
     ProductId int NOT NULL,
     FOREIGN KEY (CommandId) REFERENCES Command(Id),
-	FOREIGN KEY (ProductId) REFERENCES product(Id)
+	FOREIGN KEY (ProductId) REFERENCES Product(Id)
 ); 
 
 
