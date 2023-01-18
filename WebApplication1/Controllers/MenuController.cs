@@ -16,17 +16,16 @@ namespace WebApplication1.Controllers
         IMenuService _menuService;
         IMenuRepository _menuRepository;
 
-        public MenuController(IMenuService menuService, IMenuRepository menuRepository)
+        public MenuController(IMenuService menuService)
         {
 
             _menuService = menuService;
-            _menuRepository = menuRepository;
         }
 
         public IActionResult Menu()
         {
 
-            List<Menu> m = _menuRepository.GetAll();
+            //List<Menu> m = _menuRepository.GetAll();
             //Menu m = _menuRepository.GetById(1);
 
             // OrderViewModel OrderVM = new OrderViewModel(HttpContext.Session);
