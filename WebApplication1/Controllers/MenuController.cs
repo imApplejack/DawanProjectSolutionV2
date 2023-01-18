@@ -8,7 +8,6 @@ namespace WebApplication1.Controllers
 {
     public class MenuController : Controller
     {
-
         IMenuService _menuService;
         public MenuController(IMenuService menuService)
         {

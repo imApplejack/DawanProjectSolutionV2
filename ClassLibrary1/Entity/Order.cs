@@ -37,5 +37,24 @@ namespace AssociationCRMDawanPoe.Entity
         {
             return Products;
         }
+
+
+        /// <summary>
+        /// Somme d'une commande somme de ses menus + somme de ses produits
+        /// </summary>
+        /// <returns></returns>
+        public double GetPrice()
+        {
+            double retour = 0;
+            foreach (Product product in GetAllProducts())
+            {
+                retour += product.Price;
+            }
+            foreach (Menu menu in Menus)
+            {
+                retour += menu.GetPrice();
+            }
+            return retour;
+        }
     }
 }
