@@ -19,7 +19,6 @@ namespace WebApplication1.Controllers
 
         public MenuController(IMenuService menuService, IProductService productService)
         {
-
             _menuService = menuService;
             _productService = productService;
         }
@@ -31,6 +30,7 @@ namespace WebApplication1.Controllers
                 Products = _productService.GetAll() 
             });
         }
+
 
     }
 }

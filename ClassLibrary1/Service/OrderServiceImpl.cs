@@ -24,9 +24,11 @@ namespace AssociationCRMDawanPoe.Service
             throw new NotImplementedException();
         }
 
-        public Order NewOrder()
+        public Order NewOrder(Order order)
         {
-            throw new NotImplementedException();
+            order.OrderName = "mon order nul " + DateTime.Now;
+            OrderRepository.Create(order);
+            return order;
         }
     }
 }

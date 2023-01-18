@@ -9,7 +9,7 @@ namespace AssociationCRMDawanPoe.Service
 {
     public interface IOrderService
     {
-        public Order NewOrder();
+        public Order NewOrder(Order order);
         public Order CallOrder(string ordername);
     }
 }

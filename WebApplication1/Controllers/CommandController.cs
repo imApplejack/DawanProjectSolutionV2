@@ -53,5 +53,18 @@ namespace WebApplication1.Controllers
                 return StatusCode(500);
             }
         }
+
+        public IActionResult ShowCommand()
+        {
+            return View();
+        }
+
+        public IActionResult ValidateCommand()
+        {
+            OrderService.NewOrder(OrderViewModel.GetOrder());
+            OrderViewModel.CleanOrder();
+            return View();
+        }
+
     }
 }
