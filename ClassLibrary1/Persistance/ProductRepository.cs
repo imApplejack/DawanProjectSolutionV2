@@ -25,6 +25,7 @@ namespace AssociationCRMDawanPoe.Persistance
                 Name = p.Name,
                 Price = p.Price,
                 ProductCategory = p.ProductCategory,
+                Image = p.Image,
                 
 
             });
@@ -37,7 +38,8 @@ namespace AssociationCRMDawanPoe.Persistance
             {
                 Name = p.Name,
                 Price = p.Price,
-                ProductCategory = p.ProductCategory
+                ProductCategory = p.ProductCategory,
+                Image = p.Image,
 
             });
         }

@@ -9,6 +9,7 @@ CREATE TABLE [dbo].[Product](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Name] [varchar](40) NOT NULL,
 	[Price] [float] NULL,
+	[Image] [varchar] (1000),
 	[ProductCategory] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
