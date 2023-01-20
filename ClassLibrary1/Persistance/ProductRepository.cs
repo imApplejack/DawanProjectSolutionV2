@@ -24,7 +24,8 @@ namespace AssociationCRMDawanPoe.Persistance
             {
                 Name = p.Name,
                 Price = p.Price,
-                ProductCategory = p.ProductCategory
+                ProductCategory = p.ProductCategory,
+                
 
             });
             p.Id = affected;

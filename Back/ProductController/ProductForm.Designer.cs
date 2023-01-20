@@ -29,29 +29,30 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.idBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.CreateButton = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.MajButton = new System.Windows.Forms.Button();
+            this.imgBox = new System.Windows.Forms.TextBox();
+            this.priceBox = new System.Windows.Forms.TextBox();
+            this.nameBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.ProductDatagrid = new System.Windows.Forms.DataGridView();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Create = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductDatagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.idBox);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.CreateButton);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.MajButton);
+            this.groupBox1.Controls.Add(this.imgBox);
+            this.groupBox1.Controls.Add(this.priceBox);
+            this.groupBox1.Controls.Add(this.nameBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -62,49 +63,58 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Produit";
             // 
+            // idBox
+            // 
+            this.idBox.Location = new System.Drawing.Point(58, 75);
+            this.idBox.Name = "idBox";
+            this.idBox.ReadOnly = true;
+            this.idBox.Size = new System.Drawing.Size(125, 27);
+            this.idBox.TabIndex = 9;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 42);
+            this.label4.Location = new System.Drawing.Point(59, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(22, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Id";
             // 
-            // CreateButton
+            // MajButton
             // 
-            this.CreateButton.Location = new System.Drawing.Point(71, 343);
-            this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(94, 29);
-            this.CreateButton.TabIndex = 7;
-            this.CreateButton.Text = "creer";
-            this.CreateButton.UseVisualStyleBackColor = true;
+            this.MajButton.Location = new System.Drawing.Point(60, 341);
+            this.MajButton.Name = "MajButton";
+            this.MajButton.Size = new System.Drawing.Size(94, 29);
+            this.MajButton.TabIndex = 7;
+            this.MajButton.Text = "Maj";
+            this.MajButton.UseVisualStyleBackColor = true;
+            this.MajButton.Click += new System.EventHandler(this.MajButton_Click);
             // 
-            // textBox3
+            // imgBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(35, 279);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 27);
-            this.textBox3.TabIndex = 6;
+            this.imgBox.Location = new System.Drawing.Point(56, 277);
+            this.imgBox.Name = "imgBox";
+            this.imgBox.Size = new System.Drawing.Size(125, 27);
+            this.imgBox.TabIndex = 6;
             // 
-            // textBox2
+            // priceBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(40, 211);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 5;
+            this.priceBox.Location = new System.Drawing.Point(61, 209);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(125, 27);
+            this.priceBox.TabIndex = 5;
             // 
-            // textBox1
+            // nameBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(39, 147);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 4;
+            this.nameBox.Location = new System.Drawing.Point(60, 145);
+            this.nameBox.Name = "nameBox";
+            this.nameBox.Size = new System.Drawing.Size(125, 27);
+            this.nameBox.TabIndex = 4;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 250);
+            this.label3.Location = new System.Drawing.Point(67, 248);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 3;
@@ -113,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 180);
+            this.label2.Location = new System.Drawing.Point(58, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 20);
             this.label2.TabIndex = 2;
@@ -122,7 +132,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 115);
+            this.label1.Location = new System.Drawing.Point(58, 113);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 20);
             this.label1.TabIndex = 1;
@@ -149,19 +159,22 @@
             this.ProductDatagrid.Size = new System.Drawing.Size(697, 338);
             this.ProductDatagrid.TabIndex = 1;
             // 
-            // textBox4
+            // Create
             // 
-            this.textBox4.Location = new System.Drawing.Point(37, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(125, 27);
-            this.textBox4.TabIndex = 9;
+            this.Create.Location = new System.Drawing.Point(515, 385);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(94, 29);
+            this.Create.TabIndex = 2;
+            this.Create.Text = "Create";
+            this.Create.UseVisualStyleBackColor = true;
+            this.Create.Click += new System.EventHandler(this.Create_Click);
             // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 450);
+            this.Controls.Add(this.Create);
             this.Controls.Add(this.ProductDatagrid);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.UpdateButton);
@@ -177,16 +190,17 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox imgBox;
+        private TextBox priceBox;
+        private TextBox nameBox;
         private Label label3;
         private Label label2;
         private Label label1;
         private Button UpdateButton;
         private DataGridView ProductDatagrid;
-        private Button CreateButton;
+        private Button MajButton;
         private Label label4;
-        private TextBox textBox4;
+        private TextBox idBox;
+        private Button Create;
     }
 }
