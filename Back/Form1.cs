@@ -5,6 +5,8 @@ namespace Back
         public Form1()
         {
             InitializeComponent();
+
+            //dataGridView1.Data
         }
     }
 }
