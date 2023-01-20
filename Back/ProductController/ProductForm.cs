@@ -26,9 +26,6 @@ namespace Back.ProductController
             FillDataGridProduct();
         }
 
-
-
-
         public void FillDataGridProduct()
         {
             ProductDatagrid.DataSource = ProductService.GetAll();
@@ -59,7 +56,6 @@ namespace Back.ProductController
             imgBox.Text = "";
             priceBox.Text = "";
         }
-
 
         private void MajButton_Click(object sender, EventArgs e)
         {
