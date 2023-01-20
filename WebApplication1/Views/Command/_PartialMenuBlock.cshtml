@@ -1,0 +1,23 @@
+﻿@model KeyValuePair<int, Menu>
+
+@{
+
+}
+
+<div class="col-lg-4">
+    <div class="pricing-item">
+        <h3>@Model.Value.Name</h3>
+        <div class="icon">
+            <img height="70" width="70" src="@Model.Value.Image" />
+        </div>
+
+        <h4><sup>€</sup>@Model.Value.GetPrice()</h4>
+        <ul>
+            @foreach (Product item in Model.Value.products)
+            {
+                <li><i class="bi bi-check"></i>@item.Name</li>
+            }
+        </ul>
+        <div class="text-center"><a href="#" class="buy-btn">Supprimer</a></div>
+    </div>
+</div><!-- End Pricing Item -->

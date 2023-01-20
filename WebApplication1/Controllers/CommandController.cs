@@ -56,7 +56,10 @@ namespace WebApplication1.Controllers
 
         public IActionResult ShowCommand()
         {
-            return View();
+
+            return View(OrderViewModel.GetOrder());
+
+            OrderViewModel.GetOrder().Products.ForEach( item => Console.WriteLine("toto")  );
         }
 
         public IActionResult ValidateCommand()

@@ -1,15 +1,51 @@
-﻿@model CommandePageViewModel
+﻿@model Order
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing sections-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Ma commande</h2>
+                <p>Produits dans votre commande</p>
+            </div>
+
+            <div class="row g-4 py-lg-5" data-aos="zoom-out" data-aos-delay="100">
+
+               
+            @{
 
 
-<a href="/Command/ValidateCommand">
-<h1>CLICK POUR VALIDER LA COMMANDE</h1>
-<h1>CLICK POUR VALIDER LA COMMANDE</h1>
-<h1>CLICK POUR VALIDER LA COMMANDE</h1>
-<h1>CLICK POUR VALIDER LA COMMANDE</h1>
-<h1>CLICK POUR VALIDER LA COMMANDE</h1>
-</a>
+                int i = 0;
+                foreach (Menu item in Model.Menus)
+                {
+
+                    <partial name="_PartialMenuBlock.cshtml" model="new KeyValuePair<int, Menu>(i, item)"></partial>
+                   
+
+                }
+                i = 0;
+                foreach (Product item in Model.Products)
+                {
+                    <partial name="_PartialProductBlock.cshtml" model="new KeyValuePair<int, Product>(i, item)"></partial>
+                    i++;
+                }
+            }
+
+            </div>
+
+        </div>
+    </section><!-- End Pricing Section -->
+
+
+
+    <a href="/Command/ValidateCommand">
+        <h1>CLICK POUR VALIDER LA COMMANDE</h1>
+        <h1>CLICK POUR VALIDER LA COMMANDE</h1>
+        <h1>CLICK POUR VALIDER LA COMMANDE</h1>
+        <h1>CLICK POUR VALIDER LA COMMANDE</h1>
+        <h1>CLICK POUR VALIDER LA COMMANDE</h1>
+    </a>

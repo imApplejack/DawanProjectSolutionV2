@@ -1,0 +1,19 @@
+﻿@model KeyValuePair<int, Product>
+@{
+
+}
+
+<div class="col-lg-4">
+    <div class="pricing-item">
+        <h3>@Model.Value.Name</h3>
+        <div class="icon">
+            <img height="70" width="70" src="@Model.Value.Image" />
+        </div>
+
+        <h4><sup>€</sup>@Model.Value.GetPrice()</h4>
+        <ul>
+
+        </ul>
+        <div class="text-center"><a href="#" class="buy-btn">Supprimer</a></div>
+    </div>
+</div><!-- End Pricing Item -->
