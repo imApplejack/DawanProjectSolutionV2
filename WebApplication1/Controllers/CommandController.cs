@@ -85,6 +85,9 @@ namespace WebApplication1.Controllers
 
         public IActionResult ShowCommand()
         {
+
+          //  List<Product> lp = ProductService.GetAll(); 
+
             return View(OrderViewModel.GetOrder());
         }
 

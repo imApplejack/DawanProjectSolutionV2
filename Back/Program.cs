@@ -1,6 +1,6 @@
 using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
-using Back.Product;
+using Back.ProductController;
 using System.Configuration;
 
 namespace Back
@@ -18,7 +18,7 @@ namespace Back
         static void Main()
         {
 
-            IProductService productService = new ProductServiceImpl(new ProductRepository(ConfigurationManager.ConnectionStrings["chConnexion"].ConnectionString));
+            IProductService productService = new ProductServiceImpl(new ProductRepository("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
 
         // To customize application configuration such as set high DPI settings or default font,
