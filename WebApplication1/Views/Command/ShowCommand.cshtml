@@ -17,15 +17,11 @@
 
                
             @{
-
-
                 int i = 0;
                 foreach (Menu item in Model.Menus)
                 {
-
                     <partial name="_PartialMenuBlock.cshtml" model="new KeyValuePair<int, Menu>(i, item)"></partial>
-                   
-
+                    i++;
                 }
                 i = 0;
                 foreach (Product item in Model.Products)
@@ -34,7 +30,6 @@
                     i++;
                 }
             }
-
             </div>
 
         </div>

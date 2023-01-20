@@ -54,12 +54,38 @@ namespace WebApplication1.Controllers
             }
         }
 
+        [HttpPost]
+        public IActionResult RemoveMenu(int offset)
+        {
+            try
+            {
+                OrderViewModel.GetOrder().Menus.RemoveAt(offset);
+                return Ok(OrderViewModel.GetOrder().GetPrice());
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
+
+        [HttpPost]
+        public IActionResult RemoveProduct(int offset)
+        {
+            try
+            {
+                OrderViewModel.GetOrder().Products.RemoveAt(offset);
+                return Ok(OrderViewModel.GetOrder().GetPrice());
+            }
+            catch (Exception)
+            {
+                return StatusCode(500);
+            }
+        }
+
         public IActionResult ShowCommand()
         {
-
             return View(OrderViewModel.GetOrder());
-
-            OrderViewModel.GetOrder().Products.ForEach( item => Console.WriteLine("toto")  );
         }
 
         public IActionResult ValidateCommand()
