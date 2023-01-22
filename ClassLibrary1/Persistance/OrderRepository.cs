@@ -60,7 +60,8 @@ namespace AssociationCRMDawanPoe.Persistance
                 OrderState = OrderState.Pending,
                 OrderName = DateTime.Now.ToString() + "#" + $"{1000 + affected}"
             };
-            //TODO: Voir comment créer un OrderName autogénéré. Je mets à jour le nom par défaut.
+            //TODO: Voir comment créer un OrderName autogénéré.
+            //Je mets à jour le nom par défaut.
             EntityManager.Query("Command").Where("Id", affected).Update(new
             {
                 OrderName = order.OrderName
@@ -80,6 +81,8 @@ namespace AssociationCRMDawanPoe.Persistance
         {
             return EntityManager.Query("Command").WhereContains("OrderName", name).Get<Order>().ToList();
         }
+
+        //TODO: revoir la methode
         public void Update(Order o)
         {
             //Mise à jour de la table commande

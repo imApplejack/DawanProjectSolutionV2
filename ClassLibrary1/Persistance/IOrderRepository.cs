@@ -19,6 +19,7 @@ namespace ProjectAPI.Persistance
 
         //Récupérer une commande
         public Order GetById(int id);
+        //public List<Order> GetByStatus(OrderState status);
         public List<Order> GetByName(string name);
         public List<Order> GetAll();
         //Mettre à jour une commande en fonction de son status
