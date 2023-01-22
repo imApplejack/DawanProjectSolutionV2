@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AssociationCRMDawanPoe.Entity;
+using AssociationCRMDawanPoe.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,43 @@ namespace Back.OrderController
 {
     public partial class OrderForm : Form
     {
+        public IOrderService orderService;
+        public IMenuService menuService;
+        public IProductService productService;
+
+        public List<string> NavigationCategories;
+
+        public List<Product> products;
+        public List<Menu> menus;
+
         public OrderForm()
         {
             InitializeComponent();
+            #region Paramètres d'affichage:
+            
+            textBoxOrderName.Enabled = false;
+            textBoxTotal.Enabled = false;
+            textBoxTotal.TextAlign = HorizontalAlignment.Center;
+            textBoxOrderName.TextAlign = HorizontalAlignment.Center;
+
+            //DataGrid
+            /*
+            dataGridOrder.Columns["id"].Visible = false;
+            dataGridOrder.ReadOnly = true;
+            dataGridOrder.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridOrder.Columns["Name"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridOrder.Columns["Name"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridOrder.Columns["Price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridOrder.Columns["Price"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridOrder.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;*/
+            #endregion
+
+            #region Initialisation ListViewCategories
+            NavigationCategories = new List<string>();
+
+            #endregion
         }
     }
 }

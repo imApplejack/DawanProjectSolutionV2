@@ -32,7 +32,7 @@
             this.listViewMenusProduits = new System.Windows.Forms.ListView();
             this.textBoxOrderName = new System.Windows.Forms.TextBox();
             this.dataGridOrder = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxTotal = new System.Windows.Forms.TextBox();
             this.buttonAttente = new System.Windows.Forms.Button();
             this.buttonPayer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrder)).BeginInit();
@@ -70,12 +70,12 @@
             this.dataGridOrder.Size = new System.Drawing.Size(354, 286);
             this.dataGridOrder.TabIndex = 3;
             // 
-            // textBox1
+            // textBoxTotal
             // 
-            this.textBox1.Location = new System.Drawing.Point(412, 356);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(354, 23);
-            this.textBox1.TabIndex = 4;
+            this.textBoxTotal.Location = new System.Drawing.Point(412, 356);
+            this.textBoxTotal.Name = "textBoxTotal";
+            this.textBoxTotal.Size = new System.Drawing.Size(354, 23);
+            this.textBoxTotal.TabIndex = 4;
             // 
             // buttonAttente
             // 
@@ -102,7 +102,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonPayer);
             this.Controls.Add(this.buttonAttente);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxTotal);
             this.Controls.Add(this.dataGridOrder);
             this.Controls.Add(this.textBoxOrderName);
             this.Controls.Add(this.listViewMenusProduits);
@@ -121,7 +121,7 @@
         private ListView listViewMenusProduits;
         private TextBox textBoxOrderName;
         private DataGridView dataGridOrder;
-        private TextBox textBox1;
+        private TextBox textBoxTotal;
         private Button buttonAttente;
         private Button buttonPayer;
     }

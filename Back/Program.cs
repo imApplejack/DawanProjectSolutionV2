@@ -1,5 +1,6 @@
 using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
+using Back.OrderController;
 using Back.ProductController;
 using System.Configuration;
 
@@ -24,7 +25,8 @@ namespace Back
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ProductForm(productService));
+            //Application.Run(new ProductForm(productService));
+            Application.Run(new OrderForm());
         }
     }
 }
