@@ -14,14 +14,14 @@ namespace Back.OrderController
 {
     public partial class OrderForm : Form
     {
-        public IOrderService orderService;
-        public IMenuService menuService;
-        public IProductService productService;
+        //public IOrderService orderService;
+        //public IMenuService menuService;
+        //public IProductService productService;
 
-        public List<string> NavigationCategories;
+        public List<string> NavigationCategories = new List<string>();
 
-        public List<Product> products;
-        public List<Menu> menus;
+        public List<Product> products = new List<Product>();
+        public List<Menu> menus = new List<Menu>();
 
         public OrderForm()
         {
