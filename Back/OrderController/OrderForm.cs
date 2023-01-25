@@ -1,6 +1,7 @@
 ﻿using AssociationCRMDawanPoe.Entity;
 using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
+using System.ComponentModel;
 using System.Data;
 
 namespace Back.OrderController
@@ -78,16 +79,19 @@ namespace Back.OrderController
             {
                 int i = listBoxCategories.SelectedIndex;
                 textBoxTotal.Text = i.ToString();
+                var selected = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList()[i].ToString();
                 
-               //TODO Null exception si pas de produit dans la catégorie other.
-
-                List<Product> p = Products.Where(x => x.ProductCategory.ToString() == listBoxCategories.Items[i+1].ToString()).ToList();
+                
+                //Attention, il n'y a pas de catégorie "0" dans la base
+                List<Product> p = Products.Where(x => (x.ProductCategory-1).ToString() == selected).ToList();
+                
 
                 foreach (Product item in p)
                 {
                     listBoxProduitMenu.Items.Add(item.Name);
                 }
             }
+
         }
     }
 }
