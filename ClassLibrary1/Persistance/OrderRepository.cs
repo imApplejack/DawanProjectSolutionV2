@@ -52,12 +52,13 @@ namespace AssociationCRMDawanPoe.Persistance
             //Je demande à la base de me donner un ID
             int affected = this.EntityManager.Query("Command").InsertGetId<int>(new
             {
+                OrderName = DateTime.Now.ToString() + "#" 
             });
             //Je créé une commande avec cet ID, avec le status par défaut "Pending" et le nom de commande issu d'un formatage spécifique...Je trouve ça très étrange, revoir model objet?
             Order order = new Order()
             {
                 Id = affected,
-                OrderName = DateTime.Now.ToString() + "#" + $"{1000 + affected}"
+                OrderName = DateTime.Now.ToString() + "#" + $"{ 1000+ affected}"
             };
             //TODO: Voir comment créer un OrderName autogénéré.
             //Je mets à jour le nom par défaut.
@@ -84,7 +85,10 @@ namespace AssociationCRMDawanPoe.Persistance
         //TODO: revoir la methode
         public void Update(Order o)
         {            
-            EntityManager.Query("Command").Where("Id", o.Id).Update(o);
+            EntityManager.Query("Command").Where("Id", o.Id).Update(new
+            {
+                OrderState = o.OrderState
+            });
             //Supprime les tables de jointure
             EntityManager.Query("Command_Product").Where("CommandId", o.Id).Delete();
             EntityManager.Query("Command_Menu").Where("CommandId", o.Id).Delete();

@@ -16,24 +16,44 @@ namespace Back.OrderController
 
         public List<Product> Products = new List<Product>();
         public List<Menu> Menus = new List<Menu>();
+        public Order CurrentOrder = new Order();
+        public IOrderService _OrderService;
+        
 
-        public OrderForm(IProductService productService)
+        public OrderForm(IProductService productService, IMenuService menuService, IOrderService orderService)
         {
 
             Products = productService.GetAll();
-
+            Menus = menuService.GetAll();
+            _OrderService = orderService;
+           // CurrentOrder = orderService.NewOrder();
+            CurrentOrder = new Order();
 
             InitializeComponent();
+            
+
+            #region Initialisation ListViewCategories
+            // NavigationCategories = GetAllCategories();
+            GetAllCategories();
+
+            //listViewCategories.BindingContext = NavigationCategories;
+            #endregion
+        }
+        private void OrderForm_Load(object sender, EventArgs e)
+        {
+            dataGridOrder.DataSource=new List<Product>();
+           
             #region Paramètres d'affichage:
 
             textBoxOrderName.Enabled = false;
+
             textBoxTotal.Enabled = false;
             textBoxTotal.TextAlign = HorizontalAlignment.Center;
             textBoxOrderName.TextAlign = HorizontalAlignment.Center;
 
             //DataGrid
-            /*
             dataGridOrder.Columns["id"].Visible = false;
+            dataGridOrder.Columns["Image"].Visible = false;
             dataGridOrder.ReadOnly = true;
             dataGridOrder.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridOrder.Columns["Name"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -42,15 +62,29 @@ namespace Back.OrderController
             dataGridOrder.Columns["Price"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridOrder.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;*/
+            dataGridOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridOrder.ForeColor = Color.Black;
             #endregion
-
-            #region Initialisation ListViewCategories
-            // NavigationCategories = GetAllCategories();
-            GetAllCategories();
-
-            //listViewCategories.BindingContext = NavigationCategories;
-            #endregion
+          //  BindWindow();
+        }
+        private void BindWindow()
+        {
+            
+            
+            textBoxOrderName.Text = CurrentOrder.OrderName;
+            //textBoxTotal.Text = CurrentOrder.GetPrice().ToString();
+            List<Product> p = new List<Product>();
+            foreach (Product product in CurrentOrder.Products)
+            {
+                p.Add(product);
+            }
+            /*
+            foreach (Menu item in CurrentOrder.Menus)
+            {
+                p.Add(item);
+            }*/
+            dataGridOrder.DataSource = p;
+           // dataGridOrder.Refresh();
         }
 
         #region
@@ -79,8 +113,26 @@ namespace Back.OrderController
                 {
                     listBoxProduitMenu.Items.Add(item.Name);
                 }
-                textBoxTotal.Text = i.ToString();
             }
+
+        }
+
+        private void listBoxProduitMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string str = (string)listBoxProduitMenu.SelectedItem;
+            Product chosenProduct = Products.Where(x => x.Name == str).FirstOrDefault();
+            CurrentOrder.Products.Add(chosenProduct);
+            BindWindow();
+        }
+
+        private void buttonPayer_Click(object sender, EventArgs e)
+        {
+            /*
+            _OrderService.PayeOrder(CurrentOrder);
+            CurrentOrder = _OrderService.NewOrder();*/
+            _OrderService.NewOrder(CurrentOrder, OrderState.Payed);
+            CurrentOrder= new Order();
+            BindWindow();
 
         }
     }

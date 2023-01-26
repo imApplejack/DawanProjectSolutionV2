@@ -9,7 +9,13 @@ namespace AssociationCRMDawanPoe.Service
 {
     public interface IOrderService
     {
-        public Order NewOrder(Order order);
+        public Order NewOrder(Order order, OrderState orderstate = OrderState.Pending);
         public List<Order> CallOrder(string ordername = null);
+        //Demande au repo de fournir une nouvelle commande
+       // public Order NewOrder();
+
+        //
+       // public void PayeOrder(Order o);
+        //public void AbordOrder(Order o);
     }
 }

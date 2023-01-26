@@ -78,6 +78,7 @@
             this.buttonPayer.TabIndex = 5;
             this.buttonPayer.Text = "Payer";
             this.buttonPayer.UseVisualStyleBackColor = true;
+            this.buttonPayer.Click += new System.EventHandler(this.buttonPayer_Click);
             // 
             // listBoxCategories
             // 
@@ -97,6 +98,7 @@
             this.listBoxProduitMenu.Name = "listBoxProduitMenu";
             this.listBoxProduitMenu.Size = new System.Drawing.Size(120, 94);
             this.listBoxProduitMenu.TabIndex = 6;
+            this.listBoxProduitMenu.SelectedIndexChanged += new System.EventHandler(this.listBoxProduitMenu_SelectedIndexChanged);
             // 
             // OrderForm
             // 
@@ -112,6 +114,7 @@
             this.Controls.Add(this.textBoxOrderName);
             this.Name = "OrderForm";
             this.Text = "OrderForm";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

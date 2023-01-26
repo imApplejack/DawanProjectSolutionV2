@@ -32,25 +32,27 @@ namespace AssociationCRMDawanPoe.Service
             }
         }
 
-        public Order NewOrder(Order order)//ça n'a pas de sens
+        public Order NewOrder(Order order, OrderState orderstate = OrderState.Pending)
         {
-            order.OrderName = "mon order nul " + DateTime.Now;
+            order.OrderName = DateTime.Now.ToString();
+            order.OrderState = orderstate;
             OrderRepository.Create(order);
             return order;
         }
-        public Order NewOrder()
-        {
-            return OrderRepository.Create();
-        }
+        
 
-       
+             
+
+        
+
+
 
         //Tests
         public void methodedetest()
         {
 
-        Product p = new Product();
-        Menu menu = new Menu();
+            Product p = new Product();
+            Menu menu = new Menu();
             Order order = new Order();
 
             List<AbstractEntity> list = new();
@@ -58,10 +60,8 @@ namespace AssociationCRMDawanPoe.Service
             list.Add(menu);
             list.Add(order); //Attention, comportement non souhaité!
 
-            list.Where(x => x.GetType()==typeof(Product)).ToList();
+            list.Where(x => x.GetType() == typeof(Product)).ToList();
             //WAOUW!
         }
-        
-
     }
 }
