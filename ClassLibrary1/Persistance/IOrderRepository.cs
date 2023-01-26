@@ -31,5 +31,7 @@ namespace ProjectAPI.Persistance
         //Non nécessaire
         //public void Delete(Order o);
 
+        public List<Order> GetAll();
+
     }
 }

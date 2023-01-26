@@ -14,6 +14,11 @@ namespace AssociationCRMDawanPoe.Service
             throw new NotImplementedException();
         }
 
+        public List<Order> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Order NewOrder(Order order)
         {
             throw new NotImplementedException();

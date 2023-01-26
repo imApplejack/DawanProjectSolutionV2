@@ -1,6 +1,7 @@
 ﻿using AssociationCRMDawanPoe.Entity;
 using AssociationCRMDawanPoe.Persistance;
 using ProjectAPI.Persistance;
+using SqlKata;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -63,5 +64,13 @@ namespace AssociationCRMDawanPoe.Service
             list.Where(x => x.GetType() == typeof(Product)).ToList();
             //WAOUW!
         }
+
+
+        public List<Order> GetAll()
+        {
+
+            return OrderRepository.GetAll();
+        }
+
     }
 }
