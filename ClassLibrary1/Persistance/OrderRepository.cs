@@ -101,10 +101,7 @@ namespace AssociationCRMDawanPoe.Persistance
             return order;
 
         }
-        public List<Order> GetAll()
-        {
-            return EntityManager.Query("Command").Get<Order>().ToList();
-        }
+       
         public Order GetById(int id)
         {
             return EntityManager.Query("Command").Where("Id", id).First();

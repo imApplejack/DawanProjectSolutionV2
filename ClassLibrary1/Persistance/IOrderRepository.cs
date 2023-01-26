@@ -15,7 +15,6 @@ namespace ProjectAPI.Persistance
 
         //Depuis la fenêtre de commande, je dois:
         //Demander une nouvelle commande
-        public Order Create();
 
         //Récupérer une commande
         public Order GetById(int id);
@@ -31,7 +30,6 @@ namespace ProjectAPI.Persistance
         //Non nécessaire
         //public void Delete(Order o);
 
-        public List<Order> GetAll();
 
     }
 }
