@@ -26,17 +26,14 @@ namespace Back.OrderController
             Products = productService.GetAll();
             Menus = menuService.GetAll();
             _OrderService = orderService;
-           // CurrentOrder = orderService.NewOrder();
             CurrentOrder = new Order();
 
             InitializeComponent();
             
 
             #region Initialisation ListViewCategories
-            // NavigationCategories = GetAllCategories();
             GetAllCategories();
 
-            //listViewCategories.BindingContext = NavigationCategories;
             #endregion
         }
         private void OrderForm_Load(object sender, EventArgs e)
@@ -127,12 +124,9 @@ namespace Back.OrderController
 
         private void buttonPayer_Click(object sender, EventArgs e)
         {
-            /*
-            _OrderService.PayeOrder(CurrentOrder);
-            CurrentOrder = _OrderService.NewOrder();*/
             _OrderService.NewOrder(CurrentOrder, OrderState.Payed);
-            CurrentOrder= new Order();
             BindWindow();
+            CurrentOrder= new Order();
 
         }
     }

@@ -15,8 +15,6 @@ namespace Back
         IProductService _productService;
         IMenuService _menuService;
 
-
-
         public Form1(string connectionstring)
         {
             _connectionString = connectionstring;
