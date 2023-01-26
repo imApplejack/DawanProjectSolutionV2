@@ -12,8 +12,33 @@ namespace AssociationCRMDawanPoe.Persistance
     public class OrderRepository : AbstractRepository, IOrderRepository
     {
 
+        public ProductRepository ProductRepository;
+        public MenuRepository MenuRepository;
+
         public OrderRepository(string connexionString) : base(connexionString)
-        { 
+        {
+
+            ProductRepository = new ProductRepository(connexionString);
+            MenuRepository = new MenuRepository(connexionString);
+        }
+
+
+        private void HydrateMenuChilds(Order Order)
+        {
+            var Menus = this.EntityManager.Query("Command_Menu").Where("CommandId", Order.Id).Get();
+            foreach (var item in Menus)
+            {
+                Order.Menus.Add(this.MenuRepository.GetById(item.MenuId));
+            }
+        }
+
+        private void HydrateProductChilds(Order Order)
+        {
+            var Products = this.EntityManager.Query("Command_Product").Where("CommandId", Order.Id).Get();
+            foreach (var item in Products)
+            {
+                Order.Products.Add(this.ProductRepository.GetById(item.ProductId));
+            }
         }
 
         public void Create(Order o)
@@ -41,6 +66,18 @@ namespace AssociationCRMDawanPoe.Persistance
                     MenuId = menu.Id
                 });
             }
+        }
+
+        public List<Order> GetAll()
+        {
+            IEnumerable<Order> Orders = this.EntityManager.Query("Command").Get<Order>();
+            foreach (Order order in Orders)
+            {
+                HydrateMenuChilds(order);
+                HydrateProductChilds(order);
+            }
+            return Orders.ToList();
+
         }
 
 

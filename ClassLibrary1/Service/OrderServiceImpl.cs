@@ -1,6 +1,7 @@
 ﻿using AssociationCRMDawanPoe.Entity;
 using AssociationCRMDawanPoe.Persistance;
 using ProjectAPI.Persistance;
+using SqlKata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,13 @@ namespace AssociationCRMDawanPoe.Service
             OrderRepository.Create(order);
             return order;
         }
+
+
+        public List<Order> GetAll()
+        {
+
+            return OrderRepository.GetAll();
+        }
+
     }
 }

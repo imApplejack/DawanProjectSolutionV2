@@ -13,5 +13,7 @@ namespace ProjectAPI.Persistance
 
         public void Create(Order o);
 
+        public List<Order> GetAll();
+
     }
 }

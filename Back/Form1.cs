@@ -1,5 +1,6 @@
 using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
+using Back.KpiController;
 using Back.ProductController;
 
 namespace Back
@@ -10,7 +11,7 @@ namespace Back
 
         public string _connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         IOrderService _orderService;
-        IProductService productService;
+        IProductService _productService;
 
 
 
@@ -18,7 +19,7 @@ namespace Back
         {
             _connectionString = connectionstring;
             _orderService = new OrderServiceImpl(new OrderRepository(connectionstring));
-            productService = new ProductServiceImpl(new ProductRepository(connectionstring));
+            _productService = new ProductServiceImpl(new ProductRepository(connectionstring));
             InitializeComponent();
 
 
@@ -34,6 +35,9 @@ namespace Back
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
 
+            KpiForm form = new KpiForm(_orderService);
+            form.Show();
+
         }
 
 
@@ -45,7 +49,7 @@ namespace Back
 
         private void produitsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ProductForm form = new ProductForm(productService);
+            ProductForm form = new ProductForm(_productService);
             form.Show();
         }
     }
