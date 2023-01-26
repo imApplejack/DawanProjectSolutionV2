@@ -32,8 +32,7 @@ namespace AssociationCRMDawanPoe.Entity
         public void AddProductToOrder(Product product)
         {
             Products.Add(product);
-           
-                        
+                           
         }
         public List<Product> GetAllProducts()
         {

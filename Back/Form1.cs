@@ -9,7 +9,7 @@ namespace Back
     {
 
 
-        public string _connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public string _connectionString;
         IOrderService _orderService;
         IProductService _productService;
 
