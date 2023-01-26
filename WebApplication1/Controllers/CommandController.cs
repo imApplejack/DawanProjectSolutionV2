@@ -55,11 +55,13 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public IActionResult RemoveMenu(int offset)
+        public IActionResult RemoveMenu(int id)
         {
+            
+
             try
             {
-                OrderViewModel.GetOrder().Menus.RemoveAt(offset);
+                OrderViewModel.GetOrder().Menus.RemoveAt(id);
                 return Ok(OrderViewModel.GetOrder().GetPrice());
             }
             catch (Exception)
@@ -70,11 +72,11 @@ namespace WebApplication1.Controllers
 
 
         [HttpPost]
-        public IActionResult RemoveProduct(int offset)
+        public IActionResult RemoveProduct(int id)
         {
             try
             {
-                OrderViewModel.GetOrder().Products.RemoveAt(offset);
+                OrderViewModel.GetOrder().Products.RemoveAt(id);
                 return Ok(OrderViewModel.GetOrder().GetPrice());
             }
             catch (Exception)
