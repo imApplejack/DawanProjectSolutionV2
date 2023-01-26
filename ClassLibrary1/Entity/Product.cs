@@ -8,10 +8,10 @@ namespace AssociationCRMDawanPoe.Entity
 {
 
     public enum ProductCategory {
-        Boisson,
-        Plat,
-        Accompagnement,
-        Other
+        Boisson =1,
+        Plat=2,
+        Accompagnement=3,
+        Other=4
     }
 
     public class Product : AbstractEntity
