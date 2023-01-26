@@ -3,6 +3,7 @@ using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
 using System.ComponentModel;
 using System.Data;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Back.OrderController
 {
@@ -10,16 +11,14 @@ namespace Back.OrderController
     {
         //public IOrderService orderService;
         //public IMenuService menuService;
-        public IProductService productService;
 
         //public List<string> NavigationCategories = new List<string>();
 
         public List<Product> Products = new List<Product>();
         public List<Menu> Menus = new List<Menu>();
 
-        public OrderForm()
+        public OrderForm(IProductService productService)
         {
-            productService = new ProductServiceImpl(new ProductRepository("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CRM;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
             Products = productService.GetAll();
 
@@ -57,18 +56,12 @@ namespace Back.OrderController
         #region
         public void GetAllCategories()
         {
-            //List<string> categories = new List<string>();
-            //Product p = new();
-            var cat = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList();
+            List<ProductCategory> cat = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList();
             foreach (var item in cat)
             {
-                listBoxCategories.Items.Add(item.ToString());
+                listBoxCategories.Items.Add(item);
             }
-
-            // return categories;
         }
-
-
 
         #endregion
 
@@ -78,18 +71,15 @@ namespace Back.OrderController
             if (listBoxCategories.SelectedItem is not null)
             {
                 int i = listBoxCategories.SelectedIndex;
-                textBoxTotal.Text = i.ToString();
-                var selected = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList()[i].ToString();
+                var selected = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList()[i];
                 
-                
-                //Attention, il n'y a pas de catégorie "0" dans la base
-                List<Product> p = Products.Where(x => (x.ProductCategory-1).ToString() == selected).ToList();
-                
-
+                List<Product> p = Products.Where(x => (x.ProductCategory) == selected).ToList();
+                //Affiche les produits dans la liste de sélection.
                 foreach (Product item in p)
                 {
                     listBoxProduitMenu.Items.Add(item.Name);
                 }
+                textBoxTotal.Text = i.ToString();
             }
 
         }

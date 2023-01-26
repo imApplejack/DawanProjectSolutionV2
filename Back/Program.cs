@@ -24,7 +24,7 @@ namespace Back
         // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             //Application.Run(new ProductForm(productService));
-            Application.Run(new OrderForm());
+            Application.Run(new OrderForm(productService));
         }
     }
 }
