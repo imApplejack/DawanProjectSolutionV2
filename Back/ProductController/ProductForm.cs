@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Back.ProductController
 {
@@ -24,6 +25,7 @@ namespace Back.ProductController
             ProductService = productService;
             InitializeComponent();
             FillDataGridProduct();
+            comboBox1.DataSource = Enum.GetNames (typeof(ProductCategory));
         }
 
         public void FillDataGridProduct()
@@ -38,6 +40,7 @@ namespace Back.ProductController
             nameBox.Text = tpmProduct.Name.ToString();
             imgBox.Text = tpmProduct.Image.ToString();
             priceBox.Text = tpmProduct.Price.ToString();
+            comboBox1.SelectedItem= tpmProduct.ProductCategory.ToString();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -55,6 +58,7 @@ namespace Back.ProductController
             nameBox.Text = "";
             imgBox.Text = "";
             priceBox.Text = "";
+            comboBox1.SelectedItem = ProductCategory.Other.ToString();
         }
 
         private void MajButton_Click(object sender, EventArgs e)
@@ -64,6 +68,9 @@ namespace Back.ProductController
                 tpmProduct.Price = double.Parse(priceBox.Text);
                 tpmProduct.Name = nameBox.Text;
                 tpmProduct.Image = imgBox.Text;
+                tpmProduct.ProductCategory = (ProductCategory)(int)Enum.Parse(typeof(ProductCategory), comboBox1.SelectedItem.ToString());
+
+
                 if (tpmProduct.Id != null)
                 {
                     ProductService.UpdateProduct(tpmProduct);
