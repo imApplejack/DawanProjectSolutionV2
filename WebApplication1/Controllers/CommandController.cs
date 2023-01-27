@@ -61,7 +61,7 @@ namespace WebApplication1.Controllers
 
             try
             {
-                OrderViewModel.GetOrder().Menus.RemoveAt(id);
+                OrderViewModel.GetOrder().Menus.RemoveAt(OrderViewModel.GetOrder().Menus.FindIndex(m => m.Id == id));
                 return Ok(OrderViewModel.GetOrder().GetPrice());
             }
             catch (Exception)
@@ -76,7 +76,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                OrderViewModel.GetOrder().Products.RemoveAt(id);
+                OrderViewModel.GetOrder().Products.RemoveAt(OrderViewModel.GetOrder().Products.FindIndex(m => m.Id == id));
                 return Ok(OrderViewModel.GetOrder().GetPrice());
             }
             catch (Exception)
