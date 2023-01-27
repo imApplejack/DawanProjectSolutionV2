@@ -19,7 +19,7 @@ namespace AssociationCRMDawanPoe.Entity
         public string Name { get; set; } = String.Empty;
         public double Price { get; set; } = 0;
 
-        public string Image { get; set; } = " https://www.maisonreignier.com/wp-content/uploads/2020/08/coca-light-canette-33cl.png";
+        public string Image { get; set; } = String.Empty;
 
         public ProductCategory ProductCategory = ProductCategory.Other;
 
