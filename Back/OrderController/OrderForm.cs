@@ -64,7 +64,7 @@ namespace Back.OrderController
             dataGridOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridOrder.ForeColor = Color.Black;
             #endregion
-            //  BindWindow();
+             BindWindow();
         }
         private void BindWindow()
         {
@@ -146,8 +146,9 @@ namespace Back.OrderController
         private void buttonPayer_Click(object sender, EventArgs e)
         {
             _OrderService.NewOrder(CurrentOrder, OrderState.Payed);
-            BindWindow();
             CurrentOrder = new Order();
+            ItemDTOs.Clear();
+            BindWindow();
 
         }
 
