@@ -26,6 +26,7 @@ namespace APITestProject
             items.Add(new ItemDTO(product));
             items.Add(new ItemDTO(menu));
             items.Add(new ItemDTO(menu));
+            items.Add(new ItemDTO(menu));
         }
         [TestCleanup]
         public void Clear()
@@ -63,7 +64,7 @@ namespace APITestProject
         {
             //DO:
             List<Menu> list = ItemDTO.GetMenus(items);
-            Assert.AreEqual(2, list.Count());
+            Assert.AreEqual(3, list.Count());
         }
 
     }

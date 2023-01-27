@@ -150,5 +150,26 @@ namespace Back.OrderController
             CurrentOrder = new Order();
 
         }
+
+        private void buttonRemoveItem_Click(object sender, EventArgs e)
+        {
+            int? selected = (dataGridOrder.SelectedRows[0]).Index;
+            if (selected is null)
+            {
+                MessageBox.Show("Veuillez sélectionner un article");
+            }
+            else
+            {
+                ItemDTOs.RemoveAt(selected.Value);
+                CurrentOrder.Products.Clear();
+                CurrentOrder.Products.AddRange(ItemDTO.GetProducts(ItemDTOs));
+                CurrentOrder.Menus.Clear();
+                CurrentOrder.Menus.AddRange(ItemDTO.GetMenus(ItemDTOs));
+                
+                BindWindow();
+
+
+            }
+        }
     }
 }

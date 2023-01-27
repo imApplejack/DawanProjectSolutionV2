@@ -35,6 +35,7 @@
             this.buttonPayer = new System.Windows.Forms.Button();
             this.listBoxCategories = new System.Windows.Forms.ListBox();
             this.listBoxProduitMenu = new System.Windows.Forms.ListBox();
+            this.buttonRemoveItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridOrder)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // 
             // buttonAttente
             // 
-            this.buttonAttente.Location = new System.Drawing.Point(412, 394);
+            this.buttonAttente.Location = new System.Drawing.Point(532, 394);
             this.buttonAttente.Name = "buttonAttente";
             this.buttonAttente.Size = new System.Drawing.Size(114, 44);
             this.buttonAttente.TabIndex = 5;
@@ -100,6 +101,16 @@
             this.listBoxProduitMenu.TabIndex = 6;
             this.listBoxProduitMenu.SelectedIndexChanged += new System.EventHandler(this.listBoxProduitMenu_SelectedIndexChanged);
             // 
+            // buttonRemoveItem
+            // 
+            this.buttonRemoveItem.Location = new System.Drawing.Point(412, 394);
+            this.buttonRemoveItem.Name = "buttonRemoveItem";
+            this.buttonRemoveItem.Size = new System.Drawing.Size(114, 44);
+            this.buttonRemoveItem.TabIndex = 5;
+            this.buttonRemoveItem.Text = "Retirer";
+            this.buttonRemoveItem.UseVisualStyleBackColor = true;
+            this.buttonRemoveItem.Click += new System.EventHandler(this.buttonRemoveItem_Click);
+            // 
             // OrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -107,6 +118,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.listBoxProduitMenu);
             this.Controls.Add(this.listBoxCategories);
+            this.Controls.Add(this.buttonRemoveItem);
             this.Controls.Add(this.buttonPayer);
             this.Controls.Add(this.buttonAttente);
             this.Controls.Add(this.textBoxTotal);
@@ -129,5 +141,6 @@
         private Button buttonPayer;
         private ListBox listBoxCategories;
         private ListBox listBoxProduitMenu;
+        private Button buttonRemoveItem;
     }
 }
