@@ -70,6 +70,7 @@
             this.buttonAttente.TabIndex = 5;
             this.buttonAttente.Text = "Attente";
             this.buttonAttente.UseVisualStyleBackColor = true;
+            this.buttonAttente.Click += new System.EventHandler(this.buttonAttente_Click);
             // 
             // buttonPayer
             // 

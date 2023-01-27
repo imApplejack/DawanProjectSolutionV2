@@ -166,11 +166,16 @@ namespace Back.OrderController
                 CurrentOrder.Products.AddRange(ItemDTO.GetProducts(ItemDTOs));
                 CurrentOrder.Menus.Clear();
                 CurrentOrder.Menus.AddRange(ItemDTO.GetMenus(ItemDTOs));
-                
                 BindWindow();
-
-
             }
+        }
+
+        private void buttonAttente_Click(object sender, EventArgs e)
+        {
+            _OrderService.NewOrder(CurrentOrder, OrderState.Pending);
+            CurrentOrder = new Order();
+            ItemDTOs.Clear();
+            BindWindow();
         }
     }
 }
