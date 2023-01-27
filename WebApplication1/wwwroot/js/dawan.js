@@ -32,7 +32,7 @@ $(document).ready(function () {
     $(".command-block a").click(function (e) {
         console.log($(this).data())
         var datascope = $(this).data()
-        $.post("/Command/Remove" + $(this).data().type + "/" + $(this).data().id, function (data) {
+        $.post("/Command/Remove" + $(this).data().type + "/" + $(this).data().entityid, function (data) {
             $("#" + datascope.type + "-command-block-" + datascope.id).remove()
             $(".menu-commande-price").html(data);
             MajCommandView();
