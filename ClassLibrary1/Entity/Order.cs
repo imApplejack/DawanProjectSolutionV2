@@ -24,14 +24,24 @@ namespace AssociationCRMDawanPoe.Entity
 
         public List<Menu> Menus = new List<Menu>();
 
+        public double Price { get { return GetPrice(); } } 
+
 
         public OrderState OrderState { get; set; } = OrderState.Pending;
 
+        //Contructeur par défaut
+        /*public Order()
+        {
+            OrderName = DateTime.Now.ToString() + "#" + $"{1000 + Id}";
+            OrderState = OrderState.Pending;
+        }*/
+
+
+        //TODO à déplacer dans la couche service
         public void AddProductToOrder(Product product)
         {
             Products.Add(product);
-           
-                        
+                           
         }
         public List<Product> GetAllProducts()
         {

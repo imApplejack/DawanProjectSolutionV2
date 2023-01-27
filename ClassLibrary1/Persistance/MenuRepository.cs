@@ -54,7 +54,7 @@ namespace AssociationCRMDawanPoe.Persistance
         {
             int affected = this.EntityManager.Query("Menu").InsertGetId<int>(new
             {
-                Name = m.Name
+                Name = m.Name,Image = m.Image
             });
             m.Id = affected;
             foreach (Product product in m.products)
@@ -71,7 +71,7 @@ namespace AssociationCRMDawanPoe.Persistance
         {
             int affected = this.EntityManager.Query("Menu").Where("Id", m.Id).Update(new
             {
-                Name = m.Name
+                Name = m.Name,Image = m.Image
             });
              this.EntityManager.Query("Menu_Product").Where("MenuId", m.Id).Delete();
             foreach (Product product in m.products)

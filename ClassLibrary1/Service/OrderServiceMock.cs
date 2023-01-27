@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace AssociationCRMDawanPoe.Service
 {
-    public class OrderServiceMock : IOrderService
+    public class OrderServiceMock
     {
         public Order CallOrder(string ordername)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> GetAll()
         {
             throw new NotImplementedException();
         }
