@@ -1,9 +1,7 @@
 ﻿using AssociationCRMDawanPoe.Entity;
-using AssociationCRMDawanPoe.Persistance;
 using AssociationCRMDawanPoe.Service;
-using System.ComponentModel;
+using ProjectAPI.ItemDTO;
 using System.Data;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace Back.OrderController
 {
@@ -18,18 +16,21 @@ namespace Back.OrderController
         public List<Menu> Menus = new List<Menu>();
         public Order CurrentOrder = new Order();
         public IOrderService _OrderService;
-        
+        public List<ItemDTO> ItemDTOs;
+
 
         public OrderForm(IProductService productService, IMenuService menuService, IOrderService orderService)
         {
+
 
             Products = productService.GetAll();
             Menus = menuService.GetAll();
             _OrderService = orderService;
             CurrentOrder = new Order();
+            ItemDTOs = new List<ItemDTO>();
 
             InitializeComponent();
-            
+
 
             #region Initialisation ListViewCategories
             GetAllCategories();
@@ -38,8 +39,8 @@ namespace Back.OrderController
         }
         private void OrderForm_Load(object sender, EventArgs e)
         {
-            dataGridOrder.DataSource=new List<Product>();
-           
+            dataGridOrder.DataSource = new List<ItemDTO>();
+
             #region Paramètres d'affichage:
 
             textBoxOrderName.Enabled = false;
@@ -50,7 +51,8 @@ namespace Back.OrderController
 
             //DataGrid
             dataGridOrder.Columns["id"].Visible = false;
-            dataGridOrder.Columns["Image"].Visible = false;
+            //dataGridOrder.Columns["Image"].Visible = false;
+            dataGridOrder.Columns["Type"].Visible = false;
             dataGridOrder.ReadOnly = true;
             dataGridOrder.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridOrder.Columns["Name"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -62,26 +64,20 @@ namespace Back.OrderController
             dataGridOrder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridOrder.ForeColor = Color.Black;
             #endregion
-          //  BindWindow();
+            //  BindWindow();
         }
         private void BindWindow()
         {
-            
-            
+
+
             textBoxOrderName.Text = CurrentOrder.OrderName;
-            //textBoxTotal.Text = CurrentOrder.GetPrice().ToString();
-            List<Product> p = new List<Product>();
-            foreach (Product product in CurrentOrder.Products)
+            List<ItemDTO> p = new List<ItemDTO>();
+            foreach (var product in ItemDTOs)
             {
                 p.Add(product);
             }
-            /*
-            foreach (Menu item in CurrentOrder.Menus)
-            {
-                p.Add(item);
-            }*/
+            
             dataGridOrder.DataSource = p;
-           // dataGridOrder.Refresh();
         }
 
         #region
@@ -92,6 +88,8 @@ namespace Back.OrderController
             {
                 listBoxCategories.Items.Add(item);
             }
+            listBoxCategories.Items.Add("Menus");
+
         }
 
         #endregion
@@ -101,14 +99,26 @@ namespace Back.OrderController
             listBoxProduitMenu.Items.Clear();
             if (listBoxCategories.SelectedItem is not null)
             {
-                int i = listBoxCategories.SelectedIndex;
-                var selected = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList()[i];
-                
-                List<Product> p = Products.Where(x => (x.ProductCategory) == selected).ToList();
-                //Affiche les produits dans la liste de sélection.
-                foreach (Product item in p)
+                if (listBoxCategories.SelectedItem.ToString() == "Menus")
                 {
-                    listBoxProduitMenu.Items.Add(item.Name);
+                    foreach (var menu in Menus)
+                    {
+
+                        listBoxProduitMenu.Items.Add(menu.Name);
+                    }
+                }
+                else
+                {
+
+                    int i = listBoxCategories.SelectedIndex;
+                    var selected = Enum.GetValues(typeof(ProductCategory)).Cast<ProductCategory>().ToList()[i];
+
+                    List<Product> p = Products.Where(x => (x.ProductCategory) == selected).ToList();
+                    //Affiche les produits dans la liste de sélection.
+                    foreach (Product item in p)
+                    {
+                        listBoxProduitMenu.Items.Add(item.Name);
+                    }
                 }
             }
 
@@ -117,8 +127,19 @@ namespace Back.OrderController
         private void listBoxProduitMenu_SelectedIndexChanged(object sender, EventArgs e)
         {
             string str = (string)listBoxProduitMenu.SelectedItem;
-            Product chosenProduct = Products.Where(x => x.Name == str).FirstOrDefault();
-            CurrentOrder.Products.Add(chosenProduct);
+            if (listBoxCategories.SelectedItem.ToString() == "Menus")
+            {
+                Menu chosenmenu = Menus.Where(x => x.Name == str).FirstOrDefault();
+                CurrentOrder.Menus.Add(chosenmenu);
+                ItemDTOs.Add(new ItemDTO(chosenmenu));
+            }
+            else
+            {
+                Product chosenProduct = Products.Where(x => x.Name == str).FirstOrDefault();
+                CurrentOrder.Products.Add(chosenProduct);
+                ItemDTOs.Add(new ItemDTO(chosenProduct));
+
+            }
             BindWindow();
         }
 
@@ -126,7 +147,7 @@ namespace Back.OrderController
         {
             _OrderService.NewOrder(CurrentOrder, OrderState.Payed);
             BindWindow();
-            CurrentOrder= new Order();
+            CurrentOrder = new Order();
 
         }
     }

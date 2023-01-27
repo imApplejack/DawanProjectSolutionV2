@@ -14,17 +14,28 @@ namespace ProjectAPI.ItemDTO
         
         public int? ID { get; set; }
         public Type Type { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
 
         public ItemDTO(Product p)
         {
-            ID = p.Id;            
+            ID = p.Id;  
+            Name = p.Name;
+            Price = p.Price;
             Type = p.GetType();
         }
         public ItemDTO(Menu p)
         {
-            ID = p.Id;            
+            ID = p.Id;      
+            Name=p.Name;
+            Price = p.GetPrice();
             Type = p.GetType();
         }
+
+        public ItemDTO()
+        {
+        }
+
         public Product ConvertToProduct()
         {
             Product p = new Product()
